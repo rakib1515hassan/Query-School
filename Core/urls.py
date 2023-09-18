@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Basic_Query.urls')),
     path('time/', include('Query_Time.urls')),
+    path('aggregate/', include('Query_Aggregate.urls')),
 
     path('ckeditor/', include('ckeditor_uploader.urls')), ## For Ck-editor, It is not a app.
 ]

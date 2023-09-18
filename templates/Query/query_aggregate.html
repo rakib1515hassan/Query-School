@@ -1,0 +1,69 @@
+{% extends "query.html" %}
+{% load static %}
+{% block aggregate_active %} activ {% endblock aggregate_active %}
+
+{% block li_query_aggregate %}
+<li>aggregate(Avg())</li>
+<li>aggregate(Sum())</li>
+<li>aggregate(Min())</li>
+<li>aggregate(Max())</li>
+<li>aggregate(Count())</li>
+{% endblock li_query_aggregate %}
+
+
+{% block query_content %}
+<div>
+    <h3 class="text-center mt-3 mb-3" style="color: #3214a9;"><b>Query For Aggregate</b></h3>
+    <div class="table-responsive">
+        {% include 'message.html' %}
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <thead style="background-color: #8696FE; color: #f5f1f1;">
+                <tr>
+                    <th class="sn">No</th>
+                    <th >ORM Method</th>
+                    <th>Description</th>
+                    <th class="result">Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    <td>Query_116</td>
+                    <form action="url 'Query_301' " method="POST">
+                        {% csrf_token %}
+                        <td class="fw-bold text-danger">filter( year )</td>
+                        <td class="fw-bold">Teacher.objects.filter(joiningDate__year =
+                            <input type="number" class="wi" name="year" placeholder="year" value="2023" required>
+                            )
+                        </td>
+
+                        <td>
+                            <button type="submit" class="btn btn-danger btn-sm">Go</button>
+                        </td>
+                    </form>    
+                </tr>
+
+                
+                
+                
+
+
+
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock query_content %}
+<!-------------------------------------- Contant End ------------------------------------>
+
+
+
+{% block js %}
+
+
+
+{% endblock js %}

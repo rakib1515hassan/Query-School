@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Basic_Query',
     'Query_Time',
+    'Query_Aggregate',
 
 
 

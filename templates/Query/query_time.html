@@ -34,8 +34,8 @@
             <tbody>
                 
                 <tr>
-                    <td>Query_116</td>
-                    <form action="{% url 'Query_116' %}" method="POST">
+                    <td>Query_201</td>
+                    <form action="{% url 'Query_201' %}" method="POST">
                         {% csrf_token %}
                         <td class="fw-bold text-danger">filter( year )</td>
                         <td class="fw-bold">Teacher.objects.filter(joiningDate__year =
@@ -50,8 +50,8 @@
                 </tr>
 
                 <tr>
-                    <td>Query_117</td>
-                    <form action="{% url 'Query_117' %}" method="POST">
+                    <td>Query_202</td>
+                    <form action="{% url 'Query_202' %}" method="POST">
                         {% csrf_token %}
                         <td class="fw-bold text-danger">filter( year__range )</td>
                         <td class="fw-bold">Teacher.objects.filter(joiningDate__year__range = (
@@ -68,8 +68,8 @@
                 </tr>
 
                 <tr>
-                    <td>Query_118</td>
-                    <form action="{% url 'Query_118' %}" method="POST">
+                    <td>Query_203</td>
+                    <form action="{% url 'Query_203' %}" method="POST">
                         {% csrf_token %}
                         <td class="fw-bold text-danger">filter( month__gte )</td>
                         <td class="fw-bold">Teacher.objects.filter(joiningDate__month__gte =
@@ -84,8 +84,8 @@
                 </tr>
                 
                 <tr>
-                    <td>Query_119</td>
-                    <form action="{% url 'Query_119' %}" method="POST">
+                    <td>Query_204</td>
+                    <form action="{% url 'Query_204' %}" method="POST">
                         {% csrf_token %}
                         <td class="fw-bold text-danger">filter( year,month,day )</td>
                         <td class="fw-bold">
@@ -131,8 +131,8 @@
 
 
                 <tr>
-                    <td>Query_120</td>
-                    <form action="{% url 'Query_120' %}" method="POST">
+                    <td>Query_205</td>
+                    <form action="{% url 'Query_205' %}" method="POST">
                         {% csrf_token %}
                         <td class="fw-bold text-danger">filter( week )</td>
                         <td class="fw-bold">Teacher.objects.filter( joiningDate__week__lte = 
@@ -146,8 +146,8 @@
                 </tr>
 
                 <tr>
-                    <td>Query_121</td>
-                    <form action="{% url 'Query_121' %}" method="POST">
+                    <td>Query_206</td>
+                    <form action="{% url 'Query_206' %}" method="POST">
                         {% csrf_token %}
                         <td class="fw-bold text-danger">filter( week_day )</td>
                         <td class="fw-bold">Teacher.objects.filter( joiningDate__week_day =
@@ -169,8 +169,8 @@
                 </tr>
 
                 <tr>
-                    <td>Query_122</td>
-                    <form action="{% url 'Query_122' %}" method="POST">
+                    <td>Query_207</td>
+                    <form action="{% url 'Query_207' %}" method="POST">
                         {% csrf_token %}
                         <td class="fw-bold text-danger">filter( quarter )</td>
                         <td class="fw-bold">Student.objects.filter( date_of_birth__quarter =
@@ -189,8 +189,8 @@
                 </tr>
 
                 <tr>
-                    <td>Query_123</td>
-                    <form action="{% url 'Query_123' %}" method="POST">
+                    <td>Query_208</td>
+                    <form action="{% url 'Query_208' %}" method="POST">
                         {% csrf_token %}
                         <td class="fw-bold text-danger">filter( time )</td>
                         <td class="fw-bold">Teacher.objects.filter( joiningDate__time__lt = time(
@@ -204,8 +204,8 @@
                 </tr>
 
                 <tr>
-                    <td>Query_124</td>
-                    <form action="{% url 'Query_124' %}" method="POST">
+                    <td>Query_209</td>
+                    <form action="{% url 'Query_209' %}" method="POST">
                         {% csrf_token %}
                         <td class="fw-bold text-danger">filter( hour )</td>
                         <td class="fw-bold">Teacher.objects.filter( joiningDate__hour__lt = time(
@@ -219,8 +219,8 @@
                 </tr>
 
                 <tr>
-                    <td>Query_125</td>
-                    <form action="{% url 'Query_125' %}" method="POST">
+                    <td>Query_210</td>
+                    <form action="{% url 'Query_210' %}" method="POST">
                         {% csrf_token %}
                         <td class="fw-bold text-danger">filter( minute )</td>
                         <td class="fw-bold">Teacher.objects.filter( joiningDate__minute__lt = 
@@ -234,8 +234,8 @@
                 </tr>
                 
                 <tr>
-                    <td>Query_126</td>
-                    <form action="{% url 'Query_126' %}" method="POST">
+                    <td>Query_211</td>
+                    <form action="{% url 'Query_211' %}" method="POST">
                         {% csrf_token %}
                         <td class="fw-bold text-danger">filter( second )</td>
                         <td class="fw-bold">Teacher.objects.filter( joiningDate__second__lt = 

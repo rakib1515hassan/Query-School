@@ -4,7 +4,7 @@
 {% block q_active %} active {% endblock q_active %}
 
 {% block body %}
-<div class="row">
+<div class="row" style="height: 100vh;">
 
     <div class="col-md-2 left-sid">
         <div class="left-side">
@@ -15,17 +15,20 @@
                 {% block li_basic_query %} {% endblock li_basic_query %}
                  
                 <li id="head2">
-                    <a href="{% url 'Query_Time' %}" class="{% block time_active %}{% endblock time_active %}">Time Query</a>
+                    <a href="{% url 'Query_Time' %}" class="{% block time_active %}{% endblock time_active %}">Time</a>
                 </li>
                 {% block li_query_time %}{% endblock li_query_time %}
-        
+                <li id="head2">
+                    <a href="{% url 'Query_Aggregate' %}" class="{% block aggregate_active %}{% endblock aggregate_active %}">Aggregate</a>
+                </li>
+                {% block li_query_aggregate %}{% endblock li_query_aggregate %}
             </ul>
         </div>
     </div>
 
 
     <!-- Main Contant -->
-    <div class="col-md-10 pr-5 pl-5 mt-3" >
+    <div class="col-md-10 pr-5 pl-5 mt-3">
         {% block query_content %}
 
 

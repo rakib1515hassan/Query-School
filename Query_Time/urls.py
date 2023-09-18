@@ -6,16 +6,16 @@ urlpatterns = [
     path('query-time/', views.Query_Time, name='Query_Time'),
 
 
-    path('query-116/', views.Query_116, name='Query_116'),
-    path('query-117/', views.Query_117, name='Query_117'),
-    path('query-118/', views.Query_118, name='Query_118'),
-    path('query-119/', views.Query_119, name='Query_119'),
-    path('query-120/', views.Query_120, name='Query_120'),
-    path('query-121/', views.Query_121, name='Query_121'),
-    path('query-122/', views.Query_122, name='Query_122'),
-    path('query-123/', views.Query_123, name='Query_123'),
-    path('query-124/', views.Query_124, name='Query_124'),
-    path('query-125/', views.Query_125, name='Query_125'),
-    path('query-126/', views.Query_126, name='Query_126'),
+    path('query-20/', views.Query_201, name='Query_201'),
+    path('query-202/', views.Query_202, name='Query_202'),
+    path('query-203/', views.Query_203, name='Query_203'),
+    path('query-204/', views.Query_204, name='Query_204'),
+    path('query-205/', views.Query_205, name='Query_205'),
+    path('query-206/', views.Query_206, name='Query_206'),
+    path('query-207/', views.Query_207, name='Query_207'),
+    path('query-208/', views.Query_208, name='Query_208'),
+    path('query-209/', views.Query_209, name='Query_209'),
+    path('query-210/', views.Query_210, name='Query_210'),
+    path('query-211/', views.Query_211, name='Query_211'),
 
 ]

@@ -17,7 +17,7 @@ def Query_Time(request):
 
 
 
-def Query_116(request):
+def Query_201(request):
     _year = 2022
 
     if request.method == "POST":
@@ -48,7 +48,7 @@ def Query_116(request):
             'SQL_querry': teacher_data.query,
             'descripetion': f"সম্পূর্ন Table থেকে যাদের Joing Date {_year}, তাদের Record গুলো দেখানো হয়েছে । ",
             'ORM_querry': f"Teacher.objects.filter(joiningDate__year = {_year}))",
-            'query': Query_Code.objects.get( query_no = 'Query_116' ),
+            'query': Query_Code.objects.get( query_no = 'Query_201' ),
         }    
     return render(request, 'Result/teacher.html', data)
 
@@ -58,7 +58,7 @@ def Query_116(request):
 
 
 
-def Query_117(request):
+def Query_202(request):
     _from = 2010
     _to   = 2022
 
@@ -92,7 +92,7 @@ def Query_117(request):
             'SQL_querry': teacher_data.query,
             'descripetion': f"সম্পূর্ন Table থেকে যাদের Joing date {_from} থেকে {_to}, তাদের Record গুলোকে দেখাবে।",
             'ORM_querry': f"Teacher.objects.filter(joiningDate__year__range = ({_from}, {_to}))",
-            'query': Query_Code.objects.get( query_no = 'Query_117' ),
+            'query': Query_Code.objects.get( query_no = 'Query_202' ),
         }    
     return render(request, 'Result/teacher.html', data)
 
@@ -101,7 +101,7 @@ def Query_117(request):
 
 
 
-def Query_118(request):
+def Query_203(request):
     _month = 6
 
     if request.method == "POST":
@@ -137,7 +137,7 @@ def Query_118(request):
             'SQL_querry': teacher_data.query,
             'descripetion': f"সম্পূর্ন Table থেকে যাদের Joing Month {_month} এর সমান কিংবা বেশি ছিল তাদের Record গুলো দেখানো হয়েছে।",
             'ORM_querry': f"Teacher.objects.filter( joiningDate__month__gte = {_month} )",
-            'query': Query_Code.objects.get( query_no = 'Query_118' ),
+            'query': Query_Code.objects.get( query_no = 'Query_203' ),
         }    
     return render(request, 'Result/teacher.html', data)
 
@@ -145,7 +145,7 @@ def Query_118(request):
 
 
 
-def Query_119(request):
+def Query_204(request):
     _year = 2010
     _month = 1
     _from = 1
@@ -200,7 +200,7 @@ def Query_119(request):
                             Q(joiningDate__year={_year}) & Q(joiningDate__month={_month}) & Q(joiningDate__day__range=({_from}, {_to}))
                         )
                     """,
-            'query': Query_Code.objects.get( query_no = 'Query_119' ),
+            'query': Query_Code.objects.get( query_no = 'Query_204' ),
         }    
     return render(request, 'Result/teacher.html', data)
    
@@ -208,7 +208,7 @@ def Query_119(request):
 
 
 
-def Query_120(request):
+def Query_205(request):
     _week = 13    ## 1 week = 12 * 4 = 48 কিংবা তার ও বেশি week 
     if request.method == "POST":
         if int(request.POST.get('week')) <=0 or int(request.POST.get('week')) > 49:
@@ -245,7 +245,7 @@ def Query_120(request):
                             এর 1st week এর আগে যাদের Joint Date তাদের Record গুলো দেখাবে। 
                         """,
             'ORM_querry': f"Teacher.objects.filter( joiningDate__week__lte = {_week} ) ",
-            'query': Query_Code.objects.get( query_no = 'Query_120' ),
+            'query': Query_Code.objects.get( query_no = 'Query_205' ),
         }    
     return render(request, 'Result/teacher.html', data)
 
@@ -253,7 +253,7 @@ def Query_120(request):
 
 
 
-def Query_121(request):
+def Query_206(request):
     _day = 1    ## Sunday=1, Monday=2, Tuesday=3, Wednesday=4, Thursday=5, Friday=6, Saturday=7
     if request.method == "POST":
         if int(request.POST.get('day')) <=0 or int(request.POST.get('day')) > 7:
@@ -289,7 +289,7 @@ def Query_121(request):
                             NOTE: Sunday=1, Monday=2, Tuesday=3, Wednesday=4, Thursday=5, Friday=6, Saturday=7 
                         """,
             'ORM_querry': f"Teacher.objects.filter( joiningDate__week__lte = {_day} ) ",
-            'query': Query_Code.objects.get( query_no = 'Query_121' ),
+            'query': Query_Code.objects.get( query_no = 'Query_206' ),
         }    
     return render(request, 'Result/teacher.html', data)
 
@@ -298,7 +298,7 @@ def Query_121(request):
 
 
 
-def Query_122(request):
+def Query_207(request):
     ## NOTE এটি DateField and DateTimeField উভয় এর সাথে work করে।
     ## 1 Year = 4 Quarter. So,
         # 1st Quarter = (January, February, March), 
@@ -346,14 +346,14 @@ def Query_122(request):
                                 # 4th Quarer = (October, November, December))
                         """,
             'ORM_querry': f"Student.objects.filter( date_of_birth__quarter = {_quarter} ) ",
-            'query': Query_Code.objects.get( query_no = 'Query_122' ),
+            'query': Query_Code.objects.get( query_no = 'Query_207' ),
         }    
     return render(request, 'Result/result_1.html', data)
 
 
 
 
-def Query_123(request):
+def Query_208(request):
     ## NOTE এটি শুধু মাত্র DateTimeField এর সাথে work করে।
     _time = "10:20"  # Time you want to filter before (10:20 AM)
     if request.method == "POST":
@@ -388,7 +388,7 @@ def Query_123(request):
             'SQL_querry': teacher_data.query,
             'descripetion': f"সম্পূর্ন Table থেকে যারা {hr}:{minutes} {periods} এর আগে Join করেছে তাদের Record গুলো দেখাবে। ## NOTE এটি শুধু মাত্র DateTimeField এর সাথে work করে।",
             'ORM_querry': f"Teacher.objects.filter( joiningDate__time__lt = time({_time}) )",
-            'query': Query_Code.objects.get( query_no = 'Query_123' ),
+            'query': Query_Code.objects.get( query_no = 'Query_208' ),
         }    
     return render(request, 'Result/teacher.html', data)
 
@@ -396,7 +396,7 @@ def Query_123(request):
 
 
 
-def Query_124(request):
+def Query_209(request):
     ## NOTE এটি শুধু মাত্র DateTimeField এর সাথে কাজ করে।
     _time = "10:00" 
     if request.method == "POST":
@@ -438,7 +438,7 @@ def Query_124(request):
             'SQL_querry': teacher_data.query,
             'descripetion': f"সম্পূর্ন Table থেকে যারা {hr} {periods} এর আগে Join করেছে তাদের Record গুলো দেখাবে। ## NOTE এটি শুধু মাত্র DateTimeField এর সাথে কাজ করে।",
             'ORM_querry': f"Teacher.objects.filter( joiningDate__hour__lt = {hours} )",
-            'query': Query_Code.objects.get( query_no = 'Query_124' ),
+            'query': Query_Code.objects.get( query_no = 'Query_209' ),
         }    
     return render(request, 'Result/teacher.html', data)
 
@@ -446,7 +446,7 @@ def Query_124(request):
 
 
 
-def Query_125(request):
+def Query_210(request):
     ## NOTE এটি শুধু মাত্র DateTimeField এর সাথে কাজ করে।
     _time = "09:30" 
     if request.method == "POST":
@@ -479,7 +479,7 @@ def Query_125(request):
             'SQL_querry': teacher_data.query,
             'descripetion': f"সম্পূর্ন Table থেকে যারা 9:{minutes} A.M এর আগে Join করেছে তাদের Record গুলো দেখাবে। ## NOTE এটি শুধু মাত্র DateTimeField এর সাথে work করে। এখানে যদি আমরা Hour = 9 fix করে না দিতাম তবে প্রতি ঘণ্টায় {minutes} মিনিট এর আগে যারা join করেছে তাদের দেখাতো।",
             'ORM_querry': f"Teacher.objects.filter( joiningDate__minute__lt = {minutes} )",
-            'query': Query_Code.objects.get( query_no = 'Query_125' ),
+            'query': Query_Code.objects.get( query_no = 'Query_210' ),
         }    
     return render(request, 'Result/teacher.html', data)
 
@@ -487,7 +487,7 @@ def Query_125(request):
 
 
 
-def Query_126(request):
+def Query_211(request):
     ## NOTE এটি শুধু মাত্র DateTimeField এর সাথে কাজ করে।
     _second = 30 
     if request.method == "POST":
@@ -523,7 +523,7 @@ def Query_126(request):
             'SQL_querry': teacher_data.query,
             'descripetion': f"সম্পূর্ন Table থেকে যারা প্রতি মিনিটে {_second} এর আগে Join করেছে তাদের Record গুলো দেখাবে। এটি ভালো কাজ করে যখন আমরা টাইম টি auto now add করি তখন। ## NOTE এটি শুধু মাত্র DateTimeField এর সাথে work করে।",
             'ORM_querry': f"Teacher.objects.filter( joiningDate__second__lt = {_second} )",
-            'query': Query_Code.objects.get( query_no = 'Query_126' ),
+            'query': Query_Code.objects.get( query_no = 'Query_211' ),
         }    
     return render(request, 'Result/teacher.html', data)
     # return HttpResponse()
