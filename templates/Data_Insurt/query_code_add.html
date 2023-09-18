@@ -1,0 +1,100 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %} Add | Student {% endblock title %}
+{% block admin_active %} active {% endblock admin_active %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'CSS\query.css' %}">
+<style>
+    form{
+        font-family: "euclid_circular_a","Arial","Source Sans Pro","Helvetica Neue","Helvetica","Arial",sans-serif;
+    }
+</style>
+{% endblock css %}
+<!------------------------------------- Contant Start ----------------------------------->
+{% block body %}
+
+<!-- Add Student -->
+    <div class="container mt-5">
+
+            <h3 class="text-center fw-bold mb-3">Create Query Code</h1>
+            <div id="alart_msg"></div>
+
+            <form id="query-code-form">
+                {% csrf_token %}
+                {{ form.media}}
+                {{ form.as_p }}
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+    </div>
+
+    
+
+
+
+{% endblock body %}
+<!-------------------------------------- Contant End ------------------------------------>
+
+
+
+{% block js %}
+
+<!-- <script>
+    var myData = {
+        studentUrl: " url 'add_student' ",
+    };
+</script> -->
+
+<!-- <script src=" static 'JS\student.js' "></script> -->
+
+<!-- Include Your Custom JavaScript -->
+<script>
+$(document).ready(function () {
+    $('#query-code-form').on('submit', function (e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        // Create an object to store form data
+        var formData = {
+            query_no: $("#id_query_no").val(),
+            title: $("#id_title").val(),
+            SQL_query: CKEDITOR.instances.id_SQL_query.getData(), // Get CKEditor content
+            ORM_query: CKEDITOR.instances.id_ORM_query.getData(), // Get CKEditor content
+            csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val() // Add the CSRF token
+        };
+
+        // console.log("Data: ", formData);
+
+        // Send an AJAX POST request to your view
+        $.ajax({
+            type: 'POST',
+            url: '/query-code-add/', // Use the correct URL
+            data: formData,
+            success: function (data) {
+                // console.log(data)
+                alert('Data saved successfully!');
+
+                // Clear form fields
+                $("#id_query_no").val("");
+                $("#id_title").val("");
+
+                // Clear CKEditor content
+                CKEDITOR.instances.id_SQL_query.setData("");
+                CKEDITOR.instances.id_ORM_query.setData("");
+
+            },
+            error: function (data) {
+                // Handle any errors that occur during the AJAX request
+                // console.log(data.responseText);
+                alert(data.responseJSON.error);
+            }
+        });
+    });
+});
+
+
+</script>
+
+{% endblock js %}

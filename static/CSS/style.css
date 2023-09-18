@@ -1,0 +1,121 @@
+/* body{
+    font-family:segoe UI;
+    overflow-x:hidden;
+    height:2500px;
+} */
+
+#header-left{
+   
+    font-family:Blaster;
+
+    padding-top:10px;
+    font-weight: bold;
+    font-size:32px;
+    float:left;
+    text-decoration: none;
+    color: rgb(38, 32, 212);!important;
+}
+
+#header-right{
+    padding-bottom:10px;
+    padding-top:33px;
+    text-align:right;
+    float:right;
+    font-size:17px;
+}
+
+.nav-link{
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+
+/*  */
+
+.bg-lights{
+    background-color: rgb(21, 174, 21);
+}
+
+.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .show>.nav-link {
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.active{
+    color: white;
+}
+.left-sid{
+    background-color:#EBEBEB;
+}
+
+.left-side ul{
+    z-index:20;
+    background-color:#EBEBEB;
+    position:absolute;
+    left: 0px;
+    height:100%;
+    /* width:17%; */
+    padding-top:10px;
+    padding-bottom:15px;
+    list-style-type: none;
+    overflow-y:auto;
+    /* padding-left:0px; */
+}
+.left-side ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+.left-side ul li a:hover{
+    text-decoration: none;
+    color: rgb(39, 217, 23);
+}
+
+#head2{
+    padding-top:6px;
+    padding-bottom:7px;
+    font-size:25px;
+}
+#head2:hover{
+    background-color:#EBEBEB;
+}
+.left-side li{
+    padding-left:10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size:17px;
+}
+.left-side li:hover{
+    cursor:pointer;
+    background-color:grey;
+font-size:17px;
+}
+
+
+#main-content{
+    position:absolute;
+    z-index: 00;
+
+    height:auto;
+}
+
+
+.wi{
+    width: 60px;
+}
+
+.sn{
+    width: 10px;
+}
+.result{
+    width: 30px;
+}
+
+.activ{
+    color: rgb(25, 195, 59) !important;
+    font-weight: bold;
+}

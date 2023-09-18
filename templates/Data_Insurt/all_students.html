@@ -1,0 +1,86 @@
+{% extends "query.html" %}
+{% load static %}
+{% block basic_active %} activ {% endblock basic_active %}
+
+{% block li_basic_query %}
+<li>all()</li>
+<li>value()</li>
+<li>distinct()</li>
+<li>limit</li>
+<li>order_by()</li>
+<li>filter()</li>
+<li>filter(lt, lte, gt, gte)</li>
+<li>filter(&, |)</li>
+<li>filter(range)</li>
+<li>filter(~)</li>
+<li>filter(in)</li>
+<li>filter(iexact)</li>
+<li>filter(contains)</li>
+<li>filter(icontains)</li>    
+{% endblock li_basic_query %}
+
+{% block query_content %}
+    <div style="margin-bottom: 100px !important;">
+        <h2 class="text-center text-success">
+            <b>All Student List (<span class="text-danger">{{total}}</span>)</b> 
+        </h2>
+
+        <div class="table-responsive">
+
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                {% include 'message.html' %}
+                <thead style="background-color: #8696FE; color: #f5f1f1;">
+                    <tr>
+                        <th class="sn">No</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Class</th>
+                        <th>Roll</th>
+                        <th>Date of birth <small class="d-block">YYYY-MM-DD</small></th>
+                        <th>Gender</th>
+                        <th>Address</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for std in std_obj %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{std.name}}</td>
+                        <td>{{std.age}}</td>
+                        <td>{{std.s_class}}</td>
+                        <td>{{std.roll}}</td>
+                        <td>{{std.date_of_birth|date:"Y-m-d"}}</td>
+                        <td>{{std.gender}}</td>
+                        <td>{{std.city}}</td>
+                        <td><a class="btn btn-danger btn-sm" href="">
+                            <span class="glyphicon glyphicon-trash">Delete</span></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock query_content %}
+
+
+{% block js %}
+<!-------------------------- Java Scripts Start -------------------------->
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable({
+        "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
+            "iDisplayLength": 10
+        }
+        );
+    } );
+</script>
+
+
+<!-------------------------- Java Scripts End -------------------------->
+{% endblock js %}

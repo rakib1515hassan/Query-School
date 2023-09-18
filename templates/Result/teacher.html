@@ -1,0 +1,81 @@
+{% extends "query.html" %}
+{% load static %}
+
+
+{% block query_content %}
+    <div>
+        <h2 class="text-center" style="margin-top: 10px; color: #3e8e41;">
+            <b>Query Result</b>
+        </h2>
+        <p class="" style="font-size: 20px;"><b>Description:-</b> {{descripetion}} </p>
+        <div class="table-responsive">
+
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                {% include 'message.html' %}
+                <thead style="background-color: #8696FE; color: #f5f1f1;">
+                    <tr>
+                        <th class="sn">No</th>
+                        <th>Name</th>
+                        <th>Teacher ID</th>
+                        <th>Salary</th>
+                        <th>Address</th>
+                        <th>Joing Date <small class="d-block">YYYY-MM-DD, HH:MM:SS</small></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for t in teacher_obj %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{t.name}}</td>
+                        <td>{{t.emplyee_id}}</td>
+                        <td><span class="float-right">{{t.salary}}/-</span></td>
+                        <td>{{t.city}}</td>
+                        <td>{{ t.joiningDate|date:"Y-m-d, g:i:s A" }}</td>
+                    </tr>
+                    {% endfor %}
+
+
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <h1 class="text-center" style="margin-top: 50px; color: #D25380;"><b><u>SQL Querry</u></b></h1>
+            <h4 class="text-center" style="margin-top: 20px;">{{SQL_querry}}</h4>
+            <div class="col-md-12">
+                <div class="col-md-11 m-3">
+                    {{query.SQL_query|safe}}
+                </div>
+            </div>
+            
+
+            <h1 class="text-center" style=" color: #1a3acb; margin-top: 20px;"><b><u>ORM Querry</u></b></h1>
+            <h4 class="text-center" style="margin-top: 20px;">{{ORM_querry}}</h4>
+            <div class="col-md-12" style="margin-bottom: 100px;">
+                <div class="col-md-11 fw-bold m-3">
+                    {{query.ORM_query|safe}}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock query_content %}
+
+
+{% block js %}
+<!-------------------------- Java Scripts Start -------------------------->
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable({
+        "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
+            "iDisplayLength": 10
+        }
+        );
+    } );
+</script>
+
+
+<!-------------------------- Java Scripts End -------------------------->
+{% endblock js %}

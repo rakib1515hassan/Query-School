@@ -1,0 +1,306 @@
+{% extends "query.html" %}
+{% load static %}
+{% block basic_active %} activ {% endblock basic_active %}
+
+{% block li_basic_query %}
+<li>all()</li>
+<li>value()</li>
+<li>distinct()</li>
+<li>limit</li>
+<li>order_by()</li>
+<li>filter()</li>
+<li>filter(lt, lte, gt, gte)</li>
+<li>filter(&, |)</li>
+<li>filter(range)</li>
+<li>filter(~)</li>
+<li>filter(in)</li>
+<li>filter(iexact)</li>
+<li>filter(contains)</li>
+<li>filter(icontains)</li>    
+{% endblock li_basic_query %}
+
+
+
+{% block query_content %}
+<div>
+    <div style="margin-bottom: 100px;">
+        <h3 class="text-center" style="color: #3214a9;"><b>Basic Query</b></h3>
+        <div class="table-responsive mt-3">
+            {% include 'message.html' %}
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <thead style="background-color: #8696FE; color: #f5f1f1;">
+                    <tr>
+                        <th class="sn">No</th>
+                        <th >ORM Method</th>
+                        <th>Description</th>
+                        <th class="result">Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+    
+                    <tr>
+                        <td>Student</td>
+                        <td class="fw-bold text-primary">all()</td>
+                        <td class="fw-bold">Student.objects.all()</td>
+    
+                        <td><a class="btn btn-danger btn-sm" href="{% url 'all_student' %}">
+                            <span class="glyphicon glyphicon-trash">Go</span></a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Teacher</td>
+                        <td class="fw-bold text-primary">all()</td>
+                        <td class="fw-bold">Student.objects.all()</td>
+    
+                        <td><a class="btn btn-danger btn-sm" href="{% url 'all_teacher' %}">
+                            <span class="glyphicon glyphicon-trash">Go</span></a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Query_101</td>
+                        <td class="fw-bold text-primary">values</td>
+                        <td class="fw-bold">Student.objects.values('id', 'name', 'city', 'roll')</td>
+    
+                        <td><a class="btn btn-danger btn-sm" href="{% url 'Query_101' %}">
+                            <span class="glyphicon glyphicon-trash">Go</span></a>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td>Query_102</td>
+                        <td class="fw-bold text-danger">values, distinct</td>
+                        <td class="fw-bold">Student.objects.values('city').distinct()</td>
+    
+                        <td><a class="btn btn-danger btn-sm" href="{% url 'Query_102' %}">
+                            <span class="glyphicon glyphicon-trash">Go</span></a>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Query_103</td>
+                        <form action="{% url 'Query_103' %}" method="POST">
+                            {% csrf_token %}
+                            <td class="fw-bold text-success">limit</td>
+                            <td class="fw-bold">Student.objects.all()[
+                                <input type="number" class="wi" name="start" placeholder="start" value="0" required>
+                                :
+                                <input type="number" class="wi" name="end" placeholder="end" value="5" required>
+                                ]</td>
+        
+                            <td>
+                                <button type="submit" class="btn btn-danger btn-sm">Go</button>
+                            </td>
+                        </form>
+                    </tr>
+      
+                    <tr>
+                        <td>Query_104</td>
+                        <td class="fw-bold text-danger">order_by</td>
+                        <td class="fw-bold">Student.objects.all().order_by('roll')</td>
+    
+                        <td><a class="btn btn-danger btn-sm" href="{% url 'Query_104' %}">
+                            <span class="glyphicon glyphicon-trash">Go</span></a>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Query_105</td>
+                        <form action="{% url 'Query_105' %}" method="POST">
+                            {% csrf_token %}
+                            <td class="fw-bold text-danger">filter</td>
+                            <td class="fw-bold">Student.objects.filter(gender = "
+                                    <select required name="gender">
+                                        <!-- <option selected Disabled>select gender</option> -->
+                                        <option value="Male">Male</option>
+                                        <option selected value="Female">Female</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                ")</td>
+    
+                            <td>
+                                <button type="submit" class="btn btn-danger btn-sm">Go</button>
+                            </td>
+                        </form>    
+                    </tr>
+    
+                    <tr>
+                        <td>Query_106</td>
+                        <form action="{% url 'Query_106' %}" method="POST">
+                            {% csrf_token %}
+                            <td class="fw-bold text-danger">filter(<, <=, >, >=)</td>
+                            <td class="fw-bold">Student.objects.filter( age__
+                                <select name="lookups" required >
+                                    <!-- <option selected disabled>select</option> -->
+                                    <option selected value="lt">lt (<)</option>
+                                    <option value="lte">lte (<=)</option>
+                                    <option value="gt">gt (>)</option>
+                                    <option value="gte">gte (>=)</option>
+                                </select>
+                                = <input type="number" class="wi" name="age" placeholder="age" value="10" required> )
+                            </td>
+    
+                            <td>
+                                <button type="submit" class="btn btn-danger btn-sm">Go</button>
+                            </td>
+                        </form>    
+                    </tr>
+                    
+                    <tr>
+                        <td>Query_107</td>
+                        <form action="{% url 'Query_107' %}" method="POST">
+                            {% csrf_token %}
+                            <td class="fw-bold text-danger">filter( &, | )</td>
+                            <td class="fw-bold">Student.objects.filter( Q(age__gte =
+                                <input type="number" class="wi" name="from" placeholder="from" value="10" required>
+                                ) 
+                                <select name="operator" required >
+                                    <!-- <option selected disabled>select</option> -->
+                                    <option selected value="&"> & (and)</option>
+                                    <option value="|"> | (or)</option>
+                                </select>
+                                Q(age__lte =
+                                <input type="number" class="wi" name="to" placeholder="to" value="14" required>
+                                ) )
+                            </td>
+    
+                            <td>
+                                <button type="submit" class="btn btn-danger btn-sm">Go</button>
+                            </td>
+                        </form>    
+                    </tr>
+    
+                    <tr>
+                        <td>Query_108</td>
+                        <form action="{% url 'Query_108' %}" method="POST">
+                            {% csrf_token %}
+                            <td class="fw-bold text-danger">filter( range )</td>
+                            <td class="fw-bold">Student.objects.filter( age__range=(
+                                <input type="number" class="wi" name="from" placeholder="from" value="15" required>
+                                ,
+                                <input type="number" class="wi" name="to" placeholder="to" value="20" required>
+                                ))
+                            </td>
+    
+                            <td>
+                                <button type="submit" class="btn btn-danger btn-sm">Go</button>
+                            </td>
+                        </form>    
+                    </tr>
+    
+                    <tr>
+                        <td>Query_109</td>
+                        <td class="fw-bold text-danger">filter( range )</td>
+                        <td class="fw-bold">Student.objects.filter( date_of_birth__range = ('2000-01-01' , '2023-12-30') )</td>
+    
+                        <td><a class="btn btn-danger btn-sm" href="{% url 'Query_109' %}">
+                            <span class="glyphicon glyphicon-trash">Go</span></a>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td>Query_110</td>
+                        <form action="{% url 'Query_110' %}" method="POST">
+                            {% csrf_token %}
+                            <td class="fw-bold text-danger">filter( ~ )</td>
+                            <td class="fw-bold">
+                                Student.objects.filter(Q(s_class = 
+                                <select name="class" required >
+                                    <!-- <option selected disabled>class</option> -->
+                                    <option selected value="vi">vi</option>
+                                    <option value="vii">vii</option>
+                                    <option value="viii">viii</option>
+                                    <option value="ix">ix</option>
+                                    <option value="x">x</option>
+                                </select>
+                                ) & ~Q(gender=
+                                <select name="gender" required >
+                                    <!-- <option selected disabled>gender</option> -->
+                                    <option selected value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Others">Others</option>
+                                </select>
+                                ))
+                            </td>
+    
+                            <td>
+                                <button type="submit" class="btn btn-danger btn-sm">Go</button>
+                            </td>
+                        </form>    
+                    </tr>
+                    <tr>
+                        <td>Query_111</td>
+                        <td class="fw-bold text-danger">filter( &, | )</td>
+                        <td class="fw-bold">Student.objects.filter( Q(city = 'Dhaka') & (Q(gender= 'Female') | Q(age__gte = 12)) )</td>
+    
+                        <td><a class="btn btn-danger btn-sm" href="{% url 'Query_111' %}">
+                            <span class="glyphicon glyphicon-trash">Go</span></a>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td>Query_112</td>
+                        <td class="fw-bold text-danger">filter( in )</td>
+                        <td class="fw-bold">Student.objects.filter(city__in = ['Khulna', 'Chittagong'] )</td>
+    
+                        <td><a class="btn btn-danger btn-sm" href="{% url 'Query_112' %}">
+                            <span class="glyphicon glyphicon-trash">Go</span></a>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <td>Query_113</td>
+                        <td class="fw-bold text-danger">filter( iexact )</td>
+                        <td class="fw-bold">Student.objects.filter(name__iexact = 'rijon')</td>
+    
+                        <td><a class="btn btn-danger btn-sm" href="{% url 'Query_113' %}">
+                            <span class="glyphicon glyphicon-trash">Go</span></a>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Query_114</td>
+                        <td class="fw-bold text-danger">filter( contains )</td>
+                        <td class="fw-bold">Student.objects.filter(name__contains = 'Md')</td>
+    
+                        <td><a class="btn btn-danger btn-sm" href="{% url 'Query_114' %}">
+                            <span class="glyphicon glyphicon-trash">Go</span></a>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Query_115</td>
+                        <td class="fw-bold text-danger">filter( icontains )</td>
+                        <td class="fw-bold">Student.objects.filter(name__icontains = 'ki')</td>
+    
+                        <td><a class="btn btn-danger btn-sm" href="{% url 'Query_115' %}">
+                            <span class="glyphicon glyphicon-trash">Go</span></a>
+                        </td>
+                    </tr>
+    
+                    
+                    
+                    
+    
+    
+    
+    
+    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock query_content %}
+<!-------------------------------------- Contant End ------------------------------------>
+
+
+
+{% block js %}
+
+
+
+{% endblock js %}

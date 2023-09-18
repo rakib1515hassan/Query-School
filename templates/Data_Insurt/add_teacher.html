@@ -1,0 +1,102 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %} Add | Teacher {% endblock title %}
+{% block admin_active %} active {% endblock admin_active %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'CSS\query.css' %}">
+<style>
+    form{
+        font-family: "euclid_circular_a","Arial","Source Sans Pro","Helvetica Neue","Helvetica","Arial",sans-serif;
+    }
+</style>
+{% endblock css %}
+<!------------------------------------- Contant Start ----------------------------------->
+{% block body %}
+<!-- Add Student -->
+    <div class="d-flex justify-content-center">
+        <div class="col-md-9" style="background-color: #f5f1f1; padding: 20px 30px; border-radius: 10px;">
+            <h3 class="text-center fw-bold mb-3">Add New Teacher</h1>
+
+            <div id="alart_msg"></div>
+            
+            <form method="POST" id="add-teacher-form">
+                {% csrf_token %}
+                <div class="form-outline mb-4 d-flex">
+                    <label class="form-label col-sm-3 col-form-label" for="">Teacher Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="t_name" class="form-control" placeholder="Teacher Name"/>
+                    </div>
+                </div>
+
+                <div class="form-outline mb-4 d-flex">
+                    <label class="form-label col-sm-3 col-form-label" for="">Employee ID</label>
+                    <div class="col-sm-6">
+                        <input type="text" id="t_emplyee_id" class="form-control" placeholder="Employee ID"/>
+                    </div>
+                </div>
+                
+                <div class="form-outline mb-4 d-flex">
+                    <label class="form-label col-sm-3 col-form-label" for="">Teacher Salary</label>
+                    <div class="col-sm-6">
+                        <input type="number" id="t_salary" class="form-control" placeholder="Teacher Salary"/>
+                    </div>
+                </div>
+                
+                <div class="form-outline mb-4 d-flex">
+                    <label class="form-label col-sm-3 col-form-label" for="">Teacher Address</label>
+                    <div class="col-sm-6">
+                        <select class="form-select" aria-label="Default select example" id="t_city">
+                            <option selected Disabled  >Select City</option>
+                            <option value="Dhaka">Dhaka</option>
+                            <option value="Chittagong">Chittagong</option>
+                            <option value="Barisal">Barisal</option>
+                            <option value="Khulna">Khulna</option>
+                            <option value="Rajshahi">Rajshahi</option>
+                            <option value="Rangpur">Rangpur</option>
+                            <option value="Sylhet">Rajshahi</option>
+                            <option value="Mymensingh">Mymensingh</option>
+                            <option value="Cumilla">Cumilla</option>
+                        </select>
+                    </div>
+                </div>
+                
+
+                <div class="form-outline mb-4 d-flex">
+                    <label class="form-label col-sm-3 col-form-label" for="">Joing Date</label>
+                    <div class="col-sm-6">
+                        <input type="datetime-local" id="t_join" class="form-control"/>
+                    </div>
+                </div>
+
+                
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary btn-block col-sm-5" name="add_teacher">Add Student</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    
+
+
+
+{% endblock body %}
+<!-------------------------------------- Contant End ------------------------------------>
+
+
+
+{% block js %}
+
+<script>
+    var myData = {
+        teacherUrl: "{% url 'add_teacher' %}",
+    };
+</script>
+
+<script src="{% static 'JS\teacher.js' %}"></script>
+
+
+{% endblock js %}

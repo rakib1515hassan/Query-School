@@ -1,0 +1,41 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %} Query {% endblock title %}
+{% block q_active %} active {% endblock q_active %}
+
+{% block body %}
+<div class="row">
+
+    <div class="col-md-2 left-sid">
+        <div class="left-side">
+            <ul>
+                <li id="head2">
+                    <a href="{% url 'Query' %}" class="{% block basic_active %}{% endblock basic_active %}">Basic Query</a>
+                </li>
+                {% block li_basic_query %} {% endblock li_basic_query %}
+                 
+                <li id="head2">
+                    <a href="{% url 'Query_Time' %}" class="{% block time_active %}{% endblock time_active %}">Time Query</a>
+                </li>
+                {% block li_query_time %}{% endblock li_query_time %}
+        
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- Main Contant -->
+    <div class="col-md-10 pr-5 pl-5 mt-3" >
+        {% block query_content %}
+
+
+        
+
+
+        
+        {% endblock query_content %}
+    </div>
+    
+
+</div>
+{% endblock body %}
