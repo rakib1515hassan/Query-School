@@ -16,18 +16,26 @@
 {% block body %}
 
 <!-- Add Student -->
-    <div class="container mt-5">
+    <div class="container mt-5 mb-5">
 
-            <h3 class="text-center fw-bold mb-3">Create Query Code</h1>
-            <div id="alart_msg"></div>
-
-            <form id="query-code-form">
-                {% csrf_token %}
-                {{ form.media}}
-                {{ form.as_p }}
-
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            <h3 class="text-center fw-bold mb-3" style="color: blue;">Create Query Code</h1>
+                
+            <div class="d-flex justify-content-center">
+                <div class="col-md-9">
+                    <form id="query-code-form">
+                        <div id="alart_msg"></div>
+                        {% csrf_token %}
+                        {{ form.media}}
+                        {{ form.as_p }}
+        
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn col-md-6 pt-2 pb-2" style="background-color: rgb(92, 65, 197); color: white;">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
     </div>
 

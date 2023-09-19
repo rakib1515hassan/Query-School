@@ -1,8 +1,29 @@
-/* body{
+body{
     font-family:segoe UI;
     overflow-x:hidden;
-    height:2500px;
-} */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #eff3f2;
+}
+
+nav{
+    background-color: rgb(21, 174, 21);
+}
+
+footer{
+    margin-top: auto;
+    background-color: rgb(21, 174, 21);
+    text-align: center;
+    font-size: 18px;
+    padding: 8px;
+
+    /* Set Footer in Bootem */
+    position: static;
+    top: 100%;
+
+}
+
 
 #header-left{
    
@@ -13,7 +34,7 @@
     font-size:32px;
     float:left;
     text-decoration: none;
-    color: rgb(38, 32, 212);!important;
+    color: rgb(38, 32, 212)!important;
 }
 
 #header-right{
@@ -32,12 +53,17 @@
     font-weight: bold;
 }
 
+.nav-link:focus, .nav-link:hover {
+    color: black;
+}
+
+
 
 /*  */
 
-.bg-lights{
+/* .bg-lights{
     background-color: rgb(21, 174, 21);
-}
+} */
 
 .navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .show>.nav-link {
     color: white;
@@ -63,7 +89,8 @@
     padding-bottom:15px;
     list-style-type: none;
     overflow-y:auto;
-    /* padding-left:0px; */
+
+
 }
 .left-side ul li a{
     text-decoration: none;
@@ -119,3 +146,34 @@ font-size:17px;
     color: rgb(25, 195, 59) !important;
     font-weight: bold;
 }
+
+.dropdown-item:hover{
+    background-color: #cbc8c8;
+    color: rgb(0, 169, 65);
+}
+
+.form_box{
+    height: 100vb;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.main_form_box{
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-radius: 10px;
+    font-family:Blaster;
+    font-weight: bold;
+}
+
+/* #add-student-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+} */

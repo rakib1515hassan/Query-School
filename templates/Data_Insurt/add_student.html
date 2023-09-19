@@ -5,6 +5,7 @@
 
 
 {% block css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <link rel="stylesheet" href="{% static 'CSS\query.css' %}">
 <style>
     form{
@@ -16,36 +17,49 @@
 {% block body %}
 
 <!-- Add Student -->
-    <div class="d-flex justify-content-center">
-        <div class="col-md-9" style="background-color: #f5f1f1; padding: 20px 30px; border-radius: 10px;">
+    <!-- <div class="form_box d-flex justify-content-center"> -->
+    <div class="form_box">
+        <div class="col-md-8 main_form_box">
             <h3 class="text-center fw-bold mb-3">Add New Student</h1>
-            <div id="alart_msg"></div>
+           
+                <div class="row g-3 align-items-center">
+                    <div style="display: flex; justify-content: center;">
+                        <div id="alart_msg" style="text-align: center;" class="col-sm-4 col-md-6"></div>
+                    </div>
+                </div>
+         
 
-            <form id="add-student-form">
+            <form id="add-student-form" style="text-align: right;">
                 {% csrf_token %}
 
-                <div class="form-outline mb-4 d-flex">
-                    <label class="form-label col-sm-3 col-form-label" for="form1Example1">Student Name</label>
-                    <div class="col-sm-6">
+                <div class="row g-3 align-items-center">
+                    <div class="col-md-4">
+                      <label for="inputPassword6" class="col-form-label">Student Name</label>
+                    </div>
+                    <div class="col-md-6">
                         <input type="text" id="s_name" class="form-control" placeholder="Enter Name"/>
                     </div>
                 </div>
 
-                <div class="form-outline mb-4 d-flex">
-                    <label class="form-label col-sm-3 col-form-label" for="form1Example1">Student Gender</label>
-                    <div class="col-sm-6">
+                <div class="row g-3 align-items-center mt-3">
+                    <div class="col-md-4">
+                      <label for="inputPassword6" class="col-form-label">Student Gender</label>
+                    </div>
+                    <div class="col-md-6">
                         <select class="form-select" aria-label="Default select example" id="s_gender">
                             <option selected Disabled  >Select Gender</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                             <option value="Others">Others</option>
-                          </select>
+                        </select>
                     </div>
                 </div>
 
-                <div class="form-outline mb-4 d-flex">
-                    <label class="form-label col-sm-3 col-form-label" for="form1Example1">Student Class</label>
-                    <div class="col-sm-6">
+                <div class="row g-3 align-items-center mt-3">
+                    <div class="col-md-4">
+                      <label for="inputPassword6" class="col-form-label">Student Class</label>
+                    </div>
+                    <div class="col-md-6">
                         <select class="form-select" aria-label="Default select example" id="s_class">
                             <option selected Disabled  >Select Class</option>
                             <option value="vi">vi</option>
@@ -57,23 +71,39 @@
                     </div>
                 </div>
 
-                <div class="form-outline mb-4 d-flex">
-                    <label class="form-label col-sm-3 col-form-label" for="form1Example1">Student Roll</label>
-                    <div class="col-sm-6">
+                <div class="row g-3 align-items-center mt-3">
+                    <div class="col-md-4">
+                      <label for="inputPassword6" class="col-form-label">Student Roll</label>
+                    </div>
+                    <div class="col-md-6">
                         <input type="number" id="s_roll" class="form-control" placeholder="Enter Roll"/>
                     </div>
                 </div>
 
-                <div class="form-outline mb-4 d-flex">
-                    <label class="form-label col-sm-3 col-form-label" for="form1Example1">Student Age</label>
-                    <div class="col-sm-6">
+                <div class="row g-3 align-items-center mt-3">
+                    <div class="col-md-4">
+                        <label for="inputPassword6" class="col-form-label">Student Date of birth</label>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- <input type="date" id="s_birth" class="form-control"/> -->
+                        <input type="datetime-local" id="s_birth" class="form-control" placeholder="Select data of birth" required/>
+                    </div>
+                </div>
+
+                <div class="row g-3 align-items-center mt-3">
+                    <div class="col-md-4">
+                      <label for="inputPassword6" class="col-form-label">Student Age</label>
+                    </div>
+                    <div class="col-md-6">
                         <input type="number" id="s_age" class="form-control" placeholder="Enter Age"/>
                     </div>
                 </div>
 
-                <div class="form-outline mb-4 d-flex">
-                    <label class="form-label col-sm-3 col-form-label" for="form1Example1">Student City</label>
-                    <div class="col-sm-6">
+                <div class="row g-3 align-items-center mt-3">
+                    <div class="col-md-4">
+                        <label for="inputPassword6" class="col-form-label">Student City</label>
+                    </div>
+                    <div class="col-md-6">
                         <select class="form-select" aria-label="Default select example" id="s_city">
                             <option selected Disabled  >Select City</option>
                             <option value="Dhaka">Dhaka</option>
@@ -89,15 +119,11 @@
                     </div>
                 </div>
 
-                <div class="form-outline mb-4 d-flex">
-                    <label class="form-label col-sm-3 col-form-label" for="form1Example1">Student Date of birth</label>
-                    <div class="col-sm-6">
-                        <input type="date" id="s_birth" class="form-control"/>
-                    </div>
-                </div>
+                
+
 
                 
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center mt-5 mb-3">
                     <button type="submit" class="btn btn-primary btn-block col-sm-5" >Add Student</button>
                 </div>
 
@@ -123,5 +149,14 @@
 </script>
 
 <script src="{% static 'JS\student.js' %}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr("#s_birth", {});
+    
+    // Go to this link for more information about the configuration of Flat Pickr ( Calander )
+    // https://flatpickr.js.org/examples/#datetime
+
+</script>
 
 {% endblock js %}

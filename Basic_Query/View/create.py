@@ -118,6 +118,7 @@ def add_teacher(request):
         salary     = request.POST.get('t_salary')
         join       = request.POST.get('t_join')
 
+
         if Teacher.objects.filter( emplyee_id = emplyee_id).exists():
             response_data = {'message': 'Employee ID already exists', 'success': False}
 
@@ -126,7 +127,8 @@ def add_teacher(request):
             id = str(uuid.uuid4()).replace("-", "")
 
             # Parse the date_of_birth string to a datetime object
-            join = datetime.strptime(join, "%Y-%m-%dT%H:%M")
+            # join_date = datetime.strptime(join, "%Y-%m-%dT%H:%M")
+            join_date = datetime.strptime(join, "%Y-%m-%d %H:%M:%S")
 
             # Define the SQL query for inserting data into the Student table
             sql_query = """
@@ -136,7 +138,7 @@ def add_teacher(request):
 
             # Execute the SQL query with the data
             with connection.cursor() as cursor:
-                cursor.execute(sql_query, (id, name, emplyee_id, city, salary, join))
+                cursor.execute(sql_query, (id, name, emplyee_id, city, salary, join_date))
 
             response_data = {'message': 'Teacher added successfully', 'success': True}
         return JsonResponse(response_data)
