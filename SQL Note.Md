@@ -2,7 +2,6 @@
 
     > pip install mysqlclient
     > pip install psycopg2
-or,
     > pip install psycopg
 
 
