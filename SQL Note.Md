@@ -1,13 +1,17 @@
-# Install MySQLclient under the virtual environment
+# Install MySQLclient or PostgresClient under the virtual environment
 
     > pip install mysqlclient
+    > pip install psycopg2
+or,
+    > pip install psycopg
+
 
 
 # DATABASES
 
     DATABASES = {
         "default": {
-            "ENGINE":  "django.db.backends.postgresql",
+            "ENGINE":  "django.db.backends.postgresql", # or 'django.db.backends.postgresql_psycopg2'
             "NAME":    "mydatabase",
             "USER":    "mydatabaseuser",
             "PASSWORD":"mypassword",
